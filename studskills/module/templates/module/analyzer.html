@@ -1,0 +1,51 @@
+{% extends 'module/base.html' %}
+
+{% block content %}
+
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
+<div class="container">
+  <a class="navbar-brand" href="{% url 'home' %}">StudSkills</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto navbar-right">
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#main">Студенты</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#features">Команды</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reviews">DeepCode</a></li>
+      <li><a class="btn-nav_register js-scroll-trigger" href="{% url 'profile' %}">Профиль</a></li>
+      <li><a class="btn-nav_logout js-scroll-trigger" href="{% url 'logout' %}">Выйти</a></li>
+        <li><a class="nav-item-avatar" href="{% url 'profile' %}"><img src="https://img.icons8.com/bubbles/100/000000/user.png" alt="Avatar" class="avatar"></a></li>
+
+    </ul>
+  </div>
+</div>
+</nav><!-- Navbar End -->
+
+{% load static %}
+<div>
+<form class="analyzer-form" action="/analyzer/results/" method="POST">
+  {% csrf_token %}
+       <img class="pmfi-logo" src="{% static 'module/images/pmfi.png' %}" alt="Feature">
+
+        <div>
+        {% for field in form %}
+        <div class="analyzer-form-group">
+            {{field.label_tag}}
+            <div class="analyzer-form-label">{{field}}</div>
+            {% if field.errors%}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{error}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
+     </div>
+    <button class="btn-create_session"formaction="/dc_login" formmethod="get" formtarget="_blank">Создать сессию</button><br><br>
+    <button class="btn-submit" type="submit" name="submit">Отправить</button>
+</form>
+</div>
+{% endblock %}

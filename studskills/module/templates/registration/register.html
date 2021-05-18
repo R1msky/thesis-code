@@ -1,0 +1,81 @@
+{% extends 'module/base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
+<div class="container">
+  <a class="navbar-brand" href="{% url 'home' %}">StudSkills</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto navbar-right">
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#main">Кафедра</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#features">Сервис</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reviews">DeepCode</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing">Об авторах</a></li>
+      <li><a class="btn-nav js-scroll-trigger" href="{% url 'analyzer' %}">Диагностика</a></li>
+      <li><a class="btn-nav_register js-scroll-trigger" href="{% url 'profile' %}">Профиль</a></li>
+      <li><a class="nav-item" href="{% url 'logout' %}">ВЫЙТИ</a></li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+{% load static %}
+<div class="register-wrap">
+<form class="register-form" method="POST">
+    <img class="pmfi-logo" src="{% static 'module/images/pmfi.png' %}" alt="Feature">
+    <h2>Вы уже выполнили вход в систему.</h2>
+    <br>
+    <a class="btn-nav_register js-scroll-trigger" name="submit" href="{% url 'home' %}">НА ГЛАВНУЮ</a>
+    <br><br>
+    <a href="{% url 'logout' %}">ВЫЙТИ</a>
+</form>
+</div>
+
+{% else %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
+<div class="container">
+  <a class="navbar-brand" href="/">StudSkills</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto navbar-right">
+        <li class="nav-item">УЖЕ ЕСТЬ АККАУНТ?</a></li>
+      <li><a class="btn-nav js-scroll-trigger" href="/login">Войти</a></li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<div class="register-wrap">
+<form class="register-form" method="POST">
+    {% csrf_token %}
+     <img class="pmfi-logo" src="{% static 'module/images/pmfi.png' %}" alt="Feature">
+
+     <div>
+        {% for field in form %}
+        <div class="register-form-group">
+            {{field.label_tag}}
+            <div class="register-form-label">{{field}}</div>
+            {% if field.errors%}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{error}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
+     </div>
+    <button class="btn-nav_register js-scroll-trigger" type="submit" name="submit">Регистрация</button>
+</form>
+</div>
+{% endif %}
+
+{% endblock %}

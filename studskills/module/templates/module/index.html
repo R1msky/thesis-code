@@ -1,0 +1,123 @@
+{% extends 'module/base.html' %}
+
+{% block content %}
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
+<div class="container">
+  <a class="navbar-brand" href="{% url 'home' %}">StudSkills</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto navbar-right">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#main">Студенты</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#features">Команды</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reviews">DeepCode</a></li>
+      <li><a class="btn-nav js-scroll-trigger" href="{% url 'analyzer' %}">Диагностика</a></li>
+      <li><a class="btn-nav_register js-scroll-trigger" href="{% url 'profile' %}">Профиль</a></li>
+      <li><a class="nav-item" href="{% url 'logout' %}">ВЫЙТИ</a></li>
+      <li><a class="nav-item-avatar" href="{% url 'profile' %}"><img src="https://img.icons8.com/bubbles/100/000000/user.png" alt="Avatar" class="avatar"></a></li>
+      {% else %}
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#main">Кафедра</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#features">Сервис</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reviews">DeepCode</a></li>
+      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing">Об авторах</a></li>
+      <li><a class="btn-nav js-scroll-trigger" href="{% url 'login' %}">Войти</a></li>
+      <li><a class="btn-nav_register js-scroll-trigger" href="{% url 'register' %} ">Регистрация</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+</nav><!-- Navbar End -->
+
+{% load static %}
+<div id="main" class="main">
+        <div class="home">
+          <div class="container">
+            <div class="hero-content wow fadeIn">
+              <div class="flex-split">
+                <div class="container">
+                  <div class="flex-inner flex-inverted align-center">
+                    <div class="f-image f-image-inverted">
+                      <img class="img-fluid" src="{% static 'module/images/head.png' %}" alt="Feature">
+                    </div>
+                    <div class="f-text">
+                      <div class="left-content">
+                        <h4>Проверь свои навыки</h4>
+                        <h2>StudSkills - онлайн сервис для анализа профессиональных качеств студента</h2>
+                        <a class="btn-action btn-outline nav-link js-scroll-trigger" href="#features">Узнать больше</a>
+                        {% if request.user.is_authenticated %}
+                        <a class="btn-action" href="{% url 'analyzer' %}">ПОПРОБОВАТЬ</a>
+                        {% else %}
+                        <a class="btn-action" href="{% url 'login' %}">Войти</a>
+                        {% endif %}
+                      </div>
+                      <p class="condition_txt">В настоящий момент вы тестируете MVP</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div><!-- Hero End -->
+
+<!--- About Section -->
+<div class="yd-cat">
+  <div class="container">
+    <div class="cat-inner">
+      <div class="cat-flex">
+        <div class="cat2">
+          <h4>Как это работает</h4>
+          <h2>Проверь свой профессионализм с помощью интерактивного инструмента</h2>
+          <p> Функционал на стадии MVP*</p>
+        </div>
+      </div>
+      <div class="cat-flex">
+        <div class="cat1">
+          <div class="cat-item clr1">
+            <div class="cat-icon">
+              <div class="cat-img">
+                <img src="{% static 'module/images/nn.png' %}" width="80" alt="Neuronet">
+              </div>
+            </div>
+            <div class="cat-text">
+              <h3>DeepCode</h3>
+              <p>DeеpCode - сервис, который на основе нейросетей проведет семантический анализ кода Вашего репозитория
+              на наличие ошибок, классифицирует их и выдаст результат.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cat1">
+          <div class="cat-item clr2">
+            <div class="cat-icon">
+              <div class="cat-img">
+                <img src="{% static 'module/images/check-document.png' %}" width="80" alt="Check document">
+              </div>
+            </div>
+            <div class="cat-text">
+              <h3>Анализ рефлексии</h3>
+              <p>Встроенная тематическая модель проанализирует Вашу рефлексию и составит список компетенций..</p>
+            </div>
+          </div>
+        </div>
+        <div class="cat1">
+          <div class="cat-item clr3">
+            <div class="cat-icon">
+              <div class="cat-img">
+                <img src="{% static 'module/images/profile.png' %}" width="80" alt="Digital Profile">
+              </div>
+            </div>
+            <div class="cat-text">
+              <h3>Формирование результата</h3>
+              <p>В результате анализа будет сформирован Ваш цифровой компетентностный профиль.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

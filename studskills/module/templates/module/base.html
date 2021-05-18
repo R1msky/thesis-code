@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>StudSkills - онлайн сервис для диагностики профессиональных качеств студента</title>
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Connect Multipurpose  Landing Page Template Template">
+    <meta name="keywords" content="Connect HTML Template, Connect Landing Page Template,  Landing Page Template">
+    <link href="{% static 'module/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900%7COpen+Sans:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'module/css/animate.css' %}"> <!-- Resource style -->
+    <link rel="stylesheet" href="{% static 'module/css/own.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'module/css/owl.theme.css' %}">
+    <link rel="stylesheet" href="{% static 'module/css/ionicons.min.css' %}"> <!-- Resource style -->
+    <link href="{% static 'module/css/stylesheet.css' %}" rel="stylesheet" type="text/css" media="all" />
+  </head>
+
+  <body class="boxed-layout">
+    <div class="wrapper">
+  {% block content %}
+    {% endblock %}
+      <!-- Footer -->
+<div class="footer">
+<div class="container">
+<div class="row text-center">
+  <div class="col-lg-2 col-md-3 col-sm-12">
+    <div class="footer-logo">
+      <h2>S t u d S k i l l s</h2>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <ul class="footer-menu">
+      <li><a href="#main">Кафедра</a> </li>
+      <li><a href="#main">Сервис</a> </li>
+      <li><a href="#main">DeepCode</a> </li>
+      <li><a href="#main">Об авторах</a> </li>
+    </ul>
+  </div>
+</div>
+<!-- Scroll To Top -->
+  <a id="back-top" class="back-to-top js-scroll-trigger" href="#main"></a>
+<!-- Scroll To Top Ends-->
+</div>
+    </div><!-- Wrapper -->  </body>
+</html>

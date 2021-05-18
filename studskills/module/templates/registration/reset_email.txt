@@ -1,0 +1,9 @@
+{% autoescape off %}
+Уважаемый {{ user.first_name }}!
+Вы отправили запрос на смену пароля. Чтобы выполнить сброс, пройдите
+по этой ссылке:
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm'
+uidb64=uid token=token %}
+
+С уважением, администрация сайта "StudSkills".
+{% endautoescape %}

@@ -1,0 +1,32 @@
+{% extends 'module/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
+<div class="container">
+  <a class="navbar-brand" href="/">StudSkills</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto navbar-right">
+        <li class="nav-item">УЖЕ ЕСТЬ АККАУНТ?</a></li>
+      <li><a class="btn-nav js-scroll-trigger" href="{% url 'login' %}">Войти</a></li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<div class="register-wrap">
+<form class="register-form" method="POST">
+    {% csrf_token %}
+     <img class="pmfi-logo" src="{% static 'module/images/pmfi.png' %}" alt="Feature">
+   <br>
+   <br>
+    <h1>Письмо успешно отправлено</h1>
+
+</form>
+</div>
+
+{% endblock %}
